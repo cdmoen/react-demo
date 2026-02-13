@@ -2,16 +2,20 @@ import { useState } from "react";
 import LoginForm from "./components/LoginForm";
 import RegistrationForm from "./components/RegistrationForm";
 import TodoList from "./TodoList";
+import Tabs from "./components/Tabs";
+import GlobalMessage from "./Components/GlobalMessage";
 
 function App() {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
   const [showRegister, setShowRegister] = useState(false);
+  const [];
 
   return (
     <div className="app">
-      <h1>Todo App</h1>
-
+      <Header user="" onLogout={handleLogout} />
+      <Tabs activeTab="" setActiveTab={""} isTodosDisabled={""} />
+      <GlobalMessage />
       {!token ? (
         <div>
           {showRegister ? (
