@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 function RegistrationForm({ setToken, setUser }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUsername] = useState("");
+  const [pass, setPass] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -13,11 +13,12 @@ function RegistrationForm({ setToken, setUser }) {
       const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username: user, password: pass }),
       });
 
       if (!response.ok) {
         const data = await response.json();
+        console.log(data);
         throw new Error(data.message || "Registration failed");
       }
 
@@ -32,7 +33,7 @@ function RegistrationForm({ setToken, setUser }) {
 
       // Clear form
       setUsername("");
-      setPassword("");
+      setPass("");
       setError("");
     } catch (err) {
       console.error(err);
@@ -42,26 +43,37 @@ function RegistrationForm({ setToken, setUser }) {
   }
 
   return (
-    <form onSubmit={handleRegister}>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit">Register</button>
+    <section id="registerSection">
+      <form onSubmit={handleRegister}>
+        <h2>Register</h2>
+        <div className="field">
+          <label for="registerUsername">Username</label>
+          <input
+            id="registerUsername"
+            type="text"
+            placeholder="Username"
+            value={user}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="field">
+          <label for="registerPassword">Password</label>
+          <input
+            id="registerPassword"
+            type="password"
+            placeholder="Password"
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Register</button>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {success && <p style={{ color: "green" }}>{success}</p>}
-    </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {success && <p style={{ color: "green" }}>{success}</p>}
+      </form>
+    </section>
   );
 }
 

@@ -1,12 +1,19 @@
-* {
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
 body {
   margin: 0;
   padding: 0;
   background: #f5f5f5;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
+
+.root {
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
 header {
   background: #333;
   color: #fff;
@@ -32,7 +39,7 @@ header button[disabled] {
   cursor: default;
 }
 
-main {
+.main {
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;

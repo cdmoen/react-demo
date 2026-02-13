@@ -31,23 +31,32 @@ function LoginForm({ setToken, setUser }) {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit">Log In</button>
-    </form>
+    <section id="loginSection">
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <div className="field">
+          <label for="loginUsername">Username</label>
+          <input
+            id="loginUsername"
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <label for="loginPassword">Password</label>
+          <input
+            id="loginPassword"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Log In</button>
+        </div>
+      </form>
+    </section>
   );
 }
 
