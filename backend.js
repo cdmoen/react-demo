@@ -1,8 +1,9 @@
-const express = require("express");
-const crypto = require("crypto");
-const cors = require("cors");
+import express from "express";
+import crypto from "crypto";
+import cors from "cors";
 
 const app = express();
+app.listen(3001, () => console.log("Server running"));
 
 app.use(
   cors({
