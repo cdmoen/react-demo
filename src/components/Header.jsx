@@ -1,3 +1,5 @@
+import logoutRequest from "../modules/LogoutRequest";
+
 function Header({ user, onLogout }) {
   return (
     <header>

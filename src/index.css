@@ -154,8 +154,6 @@ form button {
   flex: 1;
 }
 .todo-title {
-  font-weight: bold;
-  margin-bottom: 4px;
 }
 .todo-meta {
   font-size: 12px;

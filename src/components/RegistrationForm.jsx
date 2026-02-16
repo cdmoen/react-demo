@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function RegistrationForm({ setToken, setUser }) {
+function RegistrationForm({ setGlobalMessage, setToken, setUser }) {
   const [user, setUsername] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
@@ -24,6 +24,10 @@ function RegistrationForm({ setToken, setUser }) {
 
       const data = await response.json();
       setSuccess("Registration successful!");
+      setGlobalMessage({
+        text: "Registration successful!",
+        type: "success",
+      });
 
       // Optional: auto-login after registration if backend returns token
       if (data.token) {
@@ -39,6 +43,10 @@ function RegistrationForm({ setToken, setUser }) {
       console.error(err);
       setError(err.message);
       setSuccess("");
+      setGlobalMessage({
+        text: "Registration failed",
+        type: "error",
+      });
     }
   }
 

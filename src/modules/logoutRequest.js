@@ -1,5 +1,5 @@
 export default async function logoutRequest(token) {
-  const response = await fetch(`${BASE_URL}/logout`, {
+  const response = await fetch(`http://localhost:3000/logout`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,

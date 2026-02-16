@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
+import NewTodoForm from "./NewTodoForm";
 import TodoItem from "./TodoItem";
 
-function TodoList({ token }) {
+function TodoList({ setGlobalMessage, token }) {
   const [todos, setTodos] = useState([]);
+
+  // ADD NEW Todo
+  const handleAddTodo = (newTodo) => {
+    setTodos((prev) => [...prev, newTodo]);
+  };
 
   // DELETE Todo
   const handleDelete = async (id) => {
@@ -42,12 +48,20 @@ function TodoList({ token }) {
       }
 
       const updatedTodo = await response.json();
+      setGlobalMessage({
+        text: "Successful update",
+        type: "success",
+      });
 
       // Update state with returned todo
       setTodos((prev) =>
         prev.map((todo) => (todo.id === id ? updatedTodo : todo)),
       );
     } catch (err) {
+      setGlobalMessage({
+        text: "Update failed",
+        type: "error",
+      });
       console.error(err);
     }
   };
@@ -65,7 +79,17 @@ function TodoList({ token }) {
 
   return (
     <section id="todosSection">
-      <ul>
+      <div className="todos-header">
+        <h2>New Todo</h2>
+      </div>
+
+      <NewTodoForm
+        setGlobalMessage={setGlobalMessage}
+        token={token}
+        onAdd={handleAddTodo}
+      />
+
+      <ul className="todos-list">
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}

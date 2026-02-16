@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function LoginForm({ setToken, setUser }) {
+function LoginForm({ setGlobalMessage, setToken, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -12,7 +12,7 @@ function LoginForm({ setToken, setUser }) {
       const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username: username, password: password }),
       });
 
       if (!response.ok) {
@@ -24,8 +24,19 @@ function LoginForm({ setToken, setUser }) {
       setToken(data.token); // store token in parent
       setUser(data.username); // store username in parent
       setError(""); // clear any previous errors
+
+      setGlobalMessage({
+        text: "Login Successful",
+        type: "success",
+      });
+      setUsername("");
+      setPassword("");
     } catch (err) {
       console.error(err);
+      setGlobalMessage({
+        text: "Invalid credentials.",
+        type: "error",
+      });
       setError("Invalid username or password");
     }
   }
