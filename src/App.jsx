@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import "./App.css";
 import logoutRequest from "./modules/LogoutRequest";
 import { storeLocally } from "./modules/storeLocally";
+import MovieForm from "./components/MovieForm";
 
 function App() {
   const [token, setToken] = useState(() => localStorage.getItem("token"));
@@ -62,6 +63,7 @@ function App() {
         className="header"
       />
       <main>
+        <MovieForm />
         <Tabs
           activeTab={activeTab}
           setActiveTab={setActiveTab}

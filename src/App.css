@@ -124,6 +124,12 @@ form button {
   border: 1px solid #a5f0b8;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .todos-header {
   display: flex;
   justify-content: space-between;
@@ -298,4 +304,123 @@ button {
 .todo-label span {
   font-size: 0.7rem;
   color: rgba(0, 0, 0, 0.548);
+}
+
+.filmCard {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.filmCardPoster {
+  flex-grow: 1;
+  width: 94px;
+  height: 141px;
+}
+.filmCardInfo {
+  flex-grow: 10;
+  padding-left: 10px;
+}
+.filmCardTitle {
+  padding: 0px;
+  margin: 0px;
+}
+.filmCardDescription {
+  padding: 0px;
+  margin: 0px;
+}
+.filmCardYear {
+  padding: 0px;
+  margin: 0px;
+}
+
+.filmCardTitleWrapper {
+  padding: 5px;
+  margin: 5px;
+}
+
+@media (max-width: 320px) {
+  main {
+    background-color: rgb(26, 26, 26);
+  }
+  .filmCard {
+    width: 320px;
+    height: 160px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding: 5px 5px 10px 5px;
+    margin: 5px;
+    text-overflow: clip;
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgb(57, 67, 85), rgb(26, 30, 39));
+    color: white;
+  }
+
+  .filmCardTitleWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 5px 0px 5px;
+  }
+
+  .filmCardTitle {
+    font-size: 1rem;
+  }
+
+  .filmCardYear {
+    font-size: 0.7rem;
+    color: #666;
+  }
+
+  .filmCardDescription {
+    padding: 5px 5px 5px 5px;
+  }
+  .filmCardPosterWrapper {
+    width: 94px;
+    height: 141px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .filmCardPoster {
+    flex: 1;
+    width: 86px;
+    height: 130px;
+    padding: 5px;
+  }
+  .filmCardInfo {
+    font-size: 0.7rem;
+    flex-grow: 10;
+    padding-left: 10px;
+    text-overflow: clip;
+  }
+  .modal {
+    position: fixed;
+    z-index: 33;
+    width: 100vw;
+    height: 100vh;
+    top: 10%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.close {
+  text-decoration: none;
+  position: fixed;
+  top: 15%;
+  left: 85%;
+}
+
+.close:visited,
+.close:hover,
+.close:active {
+  color: white;
+  text-decoration: none;
 }
