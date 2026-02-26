@@ -28,7 +28,7 @@ export function youtubeTrailer(movieInfo) {
     (trailer) => trailer.site === "YouTube",
   );
   if (!firstYoutubeLink) {
-    throw new Error("No YouTube trailers found for this movie");
+    return null;
   }
   const youtubeCode = firstYoutubeLink.key;
   return youtubeCode;

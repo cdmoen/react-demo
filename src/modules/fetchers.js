@@ -2,6 +2,8 @@ const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 // Takes in a movie string param and returns list of movie IDs
 export async function fetchMovieSearch(searchParams) {
+  const paramsString = searchParams.split(" ").join("%20");
+
   const response = await fetch(
     // Fetch using TMDB 'search' function to get list of movie ID's
     `https://api.themoviedb.org/3/search/movie?query=${searchParams}&include_adult=false&language=en-US&page=1`,
